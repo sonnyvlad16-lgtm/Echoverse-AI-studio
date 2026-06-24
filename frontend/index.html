@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoverseAI Studio - Creează cu Inteligență Artificială</title>
+    <!-- Tailwind CSS pentru design ultra-modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons pentru elemente grafice de top -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Fundal decorativ cu mesh gradient -->
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-purple-900/15 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+    <div class="absolute bottom-10 left-1/3 w-[400px] h-[400px] bg-pink-900/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+    <!-- Navigație Principală (Header) -->
+    <nav class="sticky top-0 z-40 bg-[#030712]/80 backdrop-blur-md border-b border-slate-800/80 px-4 md:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('landing')">
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-2.5 rounded-xl shadow-lg shadow-indigo-500/20">
+                <i data-lucide="sparkles" class="w-6 h-6 text-white animate-pulse"></i>
+            </div>
+            <span class="text-2xl font-extrabold tracking-tight heading-font bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
+                EchoverseAI<span class="text-indigo-500"> Studio</span>
+            </span>
+        </div>
+
+        <!-- Meniu Desktop -->
+        <div class="hidden md:flex items-center space-x-8">
+            <button onclick="switchView('landing')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Acasă</button>
+            <button onclick="switchView('app')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 bg-slate-800/40 px-3 py-1.5 rounded-lg border border-slate-700/50">
+                <i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i> Generator AI
+            </button>
+            <button onclick="switchView('pricing')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Abonamente</button>
+        </div>
+
+        <!-- Butoane de stare cont / acțiune directă -->
+        <div class="flex items-center space-x-4">
+            <div class="hidden sm:flex flex-col items-end text-right">
+                <span class="text-xs text-slate-400">Status Plan</span>
+                <span id="nav-plan-status" class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Gratuit (3 credite)
+                </span>
+            </div>
+            <button onclick="switchView('pricing')" id="upgrade-nav-btn" class="glow-button bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-1.5 transition-all">
+                <i data-lucide="zap" class="w-4 h-4"></i> Upgrade la PRO
+            </button>
+        </div>
+    </nav>
+
+    <!-- SECȚIUNEA 1: LANDING PAGE -->
+    <div id="view-landing" class="view-section flex-1 flex flex-col">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto px-4 pt-16 pb-20 text-center flex-1 flex flex-col justify-center items-center">
+            <div class="inline-flex items-center gap-2 bg-indigo-950/40 border border-indigo-800/60 px-4 py-1.5 rounded-full text-xs font-semibold text-indigo-300 mb-8">
+                <i data-lucide="sparkle" class="w-4 h-4 animate-spin"></i> Generare Text și Imagini AI într-o singură platformă
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight heading-font text-white max-w-4xl leading-[1.1] mb-6">
+                Pornește-ți propria fabrică de conținut cu <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">EchoverseAI Studio</span>
+            </h1>
+            
+            <p class="text-lg text-slate-400 max-w-2xl mb-10 leading-relaxed">
+                Platforma ta all-in-one de inteligență artificială. Generează imagini spectaculoase și copywriting premium în câteva secunde.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mb-16">
+                <button onclick="switchView('app')" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 hover:bg-slate-100 transition-all font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-white/10 text-base">
+                    Încearcă Gratis <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+                <button onclick="switchView('pricing')" class="w-full sm:w-auto px-8 py-4 bg-slate-900 border border-slate-800 hover:bg-slate-800 transition-all font-semibold rounded-2xl flex items-center justify-center gap-2 text-base text-slate-200">
+                    Vezi Abonamentele <i data-lucide="credit-card" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECȚIUNEA 2: WORKSPACE GENERATOR AI -->
+    <div id="view-app" class="view-section hidden flex-1 flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1 items-stretch">
+            <!-- Panou Control Generator (Stânga) -->
+            <div class="lg:col-span-5 flex flex-col space-y-6">
+                <!-- Selector Tip AI -->
+                <div class="glass-card p-5 rounded-2xl">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-1.5">
+                        <i data-lucide="sliders" class="w-4 h-4"></i> Tipul generatorului
+                    </h2>
+                    
+                    <div class="flex gap-2 p-1.5 bg-slate-950 rounded-xl border border-slate-800">
+                        <button id="tab-gen-image" onclick="setGeneratorMode('image')" class="flex-1 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-indigo-600 text-white">
+                            <i data-lucide="image" class="w-4 h-4"></i> Generator Imagine
+                        </button>
+                        <button id="tab-gen-text" onclick="setGeneratorMode('text')" class="flex-1 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+                            <i data-lucide="text-quote" class="w-4 h-4"></i> Scriitor AI
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input Prompt și Configurare -->
+                <div class="glass-card p-5 rounded-2xl flex-1 flex flex-col space-y-4">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
+                        <i data-lucide="pencil" class="w-4 h-4"></i> Configurează Cerința ta
+                    </h2>
+
+                    <div class="flex-1 flex flex-col space-y-2">
+                        <label class="text-xs text-slate-400 font-medium">Scrie promptul / instrucțiunile în detaliu</label>
+                        <textarea id="ai-prompt" placeholder="Ex: O pisică astronaut pe Marte..." class="w-full flex-1 min-h-[140px] bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors resize-none"></textarea>
+                    </div>
+
+                    <!-- Indicator Credite Rămase -->
+                    <div class="flex justify-between items-center bg-slate-950/80 border border-slate-800 rounded-xl p-3 text-xs">
+                        <span class="text-slate-400 flex items-center gap-1.5">
+                            <i data-lucide="database" class="w-4 h-4 text-amber-500"></i> Credite rămase:
+                        </span>
+                        <strong id="credits-count-badge" class="text-amber-400 font-bold">3</strong>
+                    </div>
+
+                    <!-- Buton Generare -->
+                    <button onclick="handleAIGeneration()" class="w-full py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all">
+                        <i data-lucide="wand-2" class="w-5 h-5"></i> Generează cu AI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Zona Rezultate & Output (Dreapta) -->
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="glass-card rounded-2xl p-6 flex flex-col flex-1 min-h-[400px]">
+                    <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-800/60">
+                        <h2 class="text-sm font-semibold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
+                            <i data-lucide="cpu" class="w-4 h-4"></i> Rezultat Generare
+                        </h2>
+                    </div>
+
+                    <!-- Stări Output -->
+                    <div class="flex-1 flex flex-col items-center justify-center" id="output-container">
+                        <div id="output-state-empty" class="text-center max-w-sm">
+                            <div class="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto mb-4 text-slate-500">
+                                <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-200 mb-1.5">Sistemul AI este pregătit</h3>
+                            <p class="text-xs text-slate-500">Scrie un prompt și apasă butonul pentru a genera conținut.</p>
+                        </div>
+                        <div id="output-state-loading" class="hidden text-center max-w-sm">
+                            <div class="w-20 h-20 mx-auto mb-6 animate-spin">
+                                <i data-lucide="loader" class="w-8 h-8 text-indigo-400"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-200 mb-2">Se randează creația ta...</h3>
+                        </div>
+                        <div id="output-state-result" class="hidden w-full h-full flex flex-col items-center justify-center">
+                            <div id="result-content" class="w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECȚIUNEA 3: PRICING PAGE -->
+    <div id="view-pricing" class="view-section hidden flex-1 flex flex-col p-4 md:p-8">
+        <section class="max-w-6xl mx-auto w-full">
+            <h1 class="text-4xl font-bold text-center mb-4">Alege-ți Planul Potrivit</h1>
+            <p class="text-center text-slate-400 mb-12">Toate planurile includ suport și acces la ultimele modele AI.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan Gratuit -->
+                <div class="glass-card p-8 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold mb-2">Gratuit</h3>
+                    <p class="text-slate-400 mb-6">Perfect pentru început</p>
+                    <div class="text-4xl font-bold mb-6">0 RON<span class="text-lg text-slate-400">/lună</span></div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> 3 generații/zi</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Imagini low-res</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> Fără prioritate</li>
+                    </ul>
+                    <button class="w-full py-2 bg-slate-800 rounded-lg">Actual</button>
+                </div>
+
+                <!-- Plan Pro -->
+                <div class="glass-card p-8 rounded-2xl border border-indigo-500 shadow-lg shadow-indigo-500/20">
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <p class="text-indigo-400 mb-6 font-semibold">Cea mai populară</p>
+                    <div class="text-4xl font-bold mb-6">99 RON<span class="text-lg text-slate-400">/lună</span></div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> 100 generații/zi</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Imagini 4K</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Prioritate înaltă</li>
+                    </ul>
+                    <button class="w-full py-2 bg-indigo-600 rounded-lg font-bold">Upgrade acum</button>
+                </div>
+
+                <!-- Plan Enterprise -->
+                <div class="glass-card p-8 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-slate-400 mb-6">Pentru echipe</p>
+                    <div class="text-4xl font-bold mb-6">Custom<span class="text-lg text-slate-400">/lună</span></div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Generații nelimitate</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> API Access</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Suport dedicat</li>
+                    </ul>
+                    <button class="w-full py-2 bg-slate-800 rounded-lg">Contactează-ne</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

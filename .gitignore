@@ -1,0 +1,33 @@
+# Dependențe
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Variabile de mediu
+.env
+.env.local
+.env.*.local
+
+# Build și dist
+dist/
+build/
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temp
+tmp/
+temp/
